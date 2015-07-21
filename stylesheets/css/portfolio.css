@@ -216,6 +216,23 @@ img.plus-one-health-img:hover {
   text-align: center;
 }
 
+/***** styling for contact page *****/
+
+#name-header {
+  color: #3399FF;
+  font-size: 25px;
+}
+
+.contact-info {
+  color: whitesmoke;
+  font-size: 18px;
+}
+
+#contact-style {
+  margin-top: 10%;
+  margin-left: 10%;
+}
+
 
 
 
