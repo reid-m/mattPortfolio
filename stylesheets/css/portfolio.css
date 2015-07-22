@@ -224,13 +224,63 @@ img.plus-one-health-img:hover {
 }
 
 .contact-info {
-  color: whitesmoke;
+  color: #000;
   font-size: 18px;
 }
 
 #contact-style {
-  margin-top: 10%;
-  margin-left: 10%;
+  margin-top: 9%;
+  text-align: center;
+}
+
+#submit-btn {
+  width: 200px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+#form-style {
+  margin-top: 19%;
+}
+
+#contact-form-name {
+  width: 72.5%;
+  margin-left: auto;
+  margin-right: auto;
+  border: 3px solid #3399FF;
+  background-color: #E4E4E4;
+}
+
+#contact-form-email {
+  width: 72.5%;
+  margin-left: auto;
+  margin-right: auto;
+  border: 3px solid #3399FF;
+  background-color: #E4E4E4;
+}
+
+#contact-form-textarea {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  border-radius: 5px;
+  width: 72.5%;
+  height: 150px;
+  margin-bottom: 2.5%;
+  border: 3px solid #3399FF;
+  background-color: #E4E4E4;
+}
+
+#contact-info-background {
+  background-color: #E4E4E4;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 5%;
+  padding-bottom: 6.5%;
+  border-radius: 5px;
+  border: 3px solid #3399FF;
 }
 
 
