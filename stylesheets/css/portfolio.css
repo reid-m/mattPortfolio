@@ -18,6 +18,7 @@
   font-size: 18px;
   border: 1px solid #222222 !important;
   border-radius: 0px 0px 5px 5px !important;
+  font-family: 'Paprika', cursive;
 }
 
 .navbar-custom {
@@ -94,6 +95,7 @@ div.col-sm-3 {
   text-align: center;
   color: #3399FF;
   font-size: 22px;
+  font-family: 'Paprika', cursive;
 }
 
 .line-break {
@@ -181,6 +183,7 @@ div.col-sm-3 {
   font-size: 40px;
   color: #3399FF;
   text-align: center;
+  font-family: 'Paprika', cursive;
 }
 
 img.co-pilot-img,
@@ -221,6 +224,8 @@ img.plus-one-health-img:hover {
 #name-header {
   color: #3399FF;
   font-size: 25px;
+  font-family: 'Paprika', cursive;
+  font-weight: bolder;
 }
 
 .contact-info {
@@ -229,7 +234,7 @@ img.plus-one-health-img:hover {
 }
 
 #contact-style {
-  margin-top: 9%;
+  margin-top: 5%;
   text-align: center;
 }
 
@@ -238,10 +243,6 @@ img.plus-one-health-img:hover {
   margin-left: auto;
   margin-right: auto;
   display: block;
-}
-
-#form-style {
-  margin-top: 19%;
 }
 
 #contact-form-name {
@@ -281,6 +282,23 @@ img.plus-one-health-img:hover {
   padding-bottom: 6.5%;
   border-radius: 5px;
   border: 3px solid #3399FF;
+}
+
+.title-header {
+  color: #3399FF;
+  font-size: 40px;
+  font-family: 'Paprika', cursive;
+  text-align: center;
+  margin-top: -1%;
+}
+
+.title-line-break {
+  border-top: 2px solid #888888;
+  margin-top: 1%;
+  width: 275px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
 }
 
 
