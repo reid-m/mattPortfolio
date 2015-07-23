@@ -168,7 +168,7 @@ div.col-sm-3 {
 /****** image carousel ******/
 
 #carousel {
-  margin-top: 4%;
+  margin-top: 3%;
 }
 
 #carousel-example-generic {
@@ -295,6 +295,16 @@ img.plus-one-health-img:hover {
 .title-line-break {
   border-top: 2px solid #888888;
   margin-top: 1%;
+  width: 275px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.title-line-break2 {
+  border-top: 2px solid #888888;
+  margin-top: 1%;
+  margin-bottom: 3%;
   width: 275px;
   margin-left: auto;
   margin-right: auto;
