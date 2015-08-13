@@ -44,7 +44,7 @@ img.profile-pic {
   margin-right: auto;
   display: block;
   margin-top: 11%;
-  transition: transform 0.4s ease;
+  transition: transform 1s ease;
   border: 5px solid #3399FF;
 
 }
