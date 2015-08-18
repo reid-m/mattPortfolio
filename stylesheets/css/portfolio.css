@@ -175,6 +175,7 @@ div.col-sm-3 {
   border: 5px solid #3399FF;
   border-radius: 5px;
   overflow: hidden !important;
+  margin-bottom: 5%;
 }
 
 /***** styling for projects page *****/
@@ -223,12 +224,6 @@ img.plus-one-health-img:hover {
 
 #photo-gallery-hdr {
   margin-top: 3%;
-}
-
-#nature-hdr,
-#abstract-hdr {
-  font-size: 24px;
-  margin-top: 5%;
 }
 
 #gallery-img {
