@@ -40,14 +40,14 @@ function jkpopimage(imgpath, popwidth, popheight, textdescription){
   if (typeof popwin=="undefined" || popwin.closed)
     popwin=window.open("","",winattributes)
   else{
-getpos() 
-popwin.moveTo(leftpos, toppos)
-popwin.resizeTo(popwidth, popheight+30)
-}
-popwin.document.open()
-popwin.document.write('<html><title>'+windowtitle+'</title><body '+bodyattribute+'><img src="'+imgpath+'" style="margin-bottom: 0.5em"><br />'+textdescription+'</body></html>')
-popwin.document.close()
-popwin.focus()
+    getpos() 
+    popwin.moveTo(leftpos, toppos)
+    popwin.resizeTo(popwidth, popheight+30)
+  }
+  popwin.document.open()
+  popwin.document.write('<html><title>'+windowtitle+'</title><body '+bodyattribute+'><img src="'+imgpath+'" style="margin-bottom: 0.5em"><br />'+textdescription+'</body></html>')
+  popwin.document.close()
+  popwin.focus()
 }
 </script>
 </head>
@@ -63,7 +63,6 @@ popwin.focus()
           <span class="icon-bar"></span>
         </button>
       </div> 
-
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div id="nav-link-style">
         <!-- <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"> -->
@@ -82,7 +81,6 @@ popwin.focus()
   <div class="title-line-break"></div>
   <div class="col-sm-3"></div>
   <div class="col-sm-6" id="carousel">
-
     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
       <!-- Indicators -->
       <ol class="carousel-indicators">
@@ -94,7 +92,6 @@ popwin.focus()
         <li data-target="#carousel-example-generic" data-slide-to="5"></li>
         <li data-target="#carousel-example-generic" data-slide-to="6"></li>
       </ol>
-
       <!-- Wrapper for slides -->
       <div class="carousel-inner" role="listbox">
         <div class="item active">
@@ -140,7 +137,6 @@ popwin.focus()
           </div>
         </div>
       </div>
-
       <!-- Controls -->
       <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
         <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
@@ -155,13 +151,7 @@ popwin.focus()
 </div>
 </div>
 <div class="container">
-
   <div class="row">
-
-    <!-- <div class="col-sm-12">
-    <h3 class="title-header" id="nature-hdr">Nature</h3>
-    </div> -->
-
     <div class="col-lg-3 col-md-4 col-sm-6 thumb">
       <a class="thumbnail img-responsive" href="#"onClick="jkpopimage('/images/cali-beach.jpg', 1000, 667, 'Beach in northern california.'); return false">
         <img class="img-responsive" src="/images/cali-beach.jpg" alt="Beach in northern california.">
@@ -202,14 +192,8 @@ popwin.focus()
         <img class="img-responsive" src="/images/inukshuk.jpg" alt="Inukshuk along the Vancouver sea wall.">
       </a>
     </div>
-  <!-- </div> -->
-<!-- <div class="container">
-  <div class="row">
-    <div class="col-lg-12">
-    <h3 class="title-header" id="abstract-hdr">Abstract</h3>
-    </div> -->
     <div class="col-lg-3 col-md-4 col-sm-6 thumb">
-    <a class="thumbnail" href="#"onClick="jkpopimage('/images/rock.jpg', 1000, 667 ); return false">
+      <a class="thumbnail" href="#"onClick="jkpopimage('/images/rock.jpg', 1000, 667 ); return false">
         <img class="img-responsive" src="/images/rock.jpg" alt="">
       </a>
     </div>
@@ -249,8 +233,5 @@ popwin.focus()
       </a>
     </div>
   </div>
-
 </body>
-
-
 </html>
