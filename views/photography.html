@@ -16,39 +16,56 @@
       });
     });
 
-var popbackground="whitesmoke" //specify backcolor or background image for pop window
-var windowtitle="Image Window"  //pop window title
+    $(document).ready(function(){
 
-function detectexist(obj){
-  return (typeof obj !="undefined")
-}
+      loadGallery(true, 'a.thumbnail');
 
-function jkpopimage(imgpath, popwidth, popheight, textdescription){
-
-  function getpos(){
-    leftpos=(detectexist(window.screenLeft))? screenLeft+document.body.clientWidth/2-popwidth/2 : detectexist(window.screenX)? screenX+innerWidth/2-popwidth/2 : 0
-    toppos=(detectexist(window.screenTop))? screenTop+document.body.clientHeight/2-popheight/2 : detectexist(window.screenY)? screenY+innerHeight/2-popheight/2 : 0
-    if (window.opera){
-      leftpos-=screenLeft
-      toppos-=screenTop
+    function disableButtons(counter_max, counter_current){
+      $('#show-previous-image, #show-next-image').show();
+      if(counter_max == counter_current){
+        $('#show-next-image').hide();
+      } else if (counter_current == 1){
+        $('#show-previous-image').hide();
+      }
     }
-  }
 
-  getpos()
-  var winattributes='width='+popwidth+',height='+popheight+',resizable=yes,left='+leftpos+',top='+toppos
-  var bodyattribute=(popbackground.indexOf(".")!=-1)? 'background="'+popbackground+'"' : 'bgcolor="'+popbackground+'"'
-  if (typeof popwin=="undefined" || popwin.closed)
-    popwin=window.open("","",winattributes)
-  else{
-    getpos() 
-    popwin.moveTo(leftpos, toppos)
-    popwin.resizeTo(popwidth, popheight+30)
-  }
-  popwin.document.open()
-  popwin.document.write('<html><title>'+windowtitle+'</title><body '+bodyattribute+'><img src="'+imgpath+'" style="margin-bottom: 0.5em"><br />'+textdescription+'</body></html>')
-  popwin.document.close()
-  popwin.focus()
-}
+    function loadGallery(setIDs, setClickAttr){
+      var current_image,
+      selector,
+      counter = 0;
+
+      $('#show-next-image, #show-previous-image').click(function(){
+        if($(this).attr('id') == 'show-previous-image'){
+          current_image--;
+        } else {
+          current_image++;
+        }
+
+        selector = $('[data-image-id="' + current_image + '"]');
+        updateGallery(selector);
+      });
+
+      function updateGallery(selector) {
+        var $sel = selector;
+        current_image = $sel.data('image-id');
+        $('#image-gallery-caption').text($sel.data('caption'));
+        $('#image-gallery-title').text($sel.data('title'));
+        $('#image-gallery-image').attr('src', $sel.data('image'));
+        disableButtons(counter, $sel.data('image-id'));
+      }
+
+      if(setIDs == true){
+        $('[data-image-id]').each(function(){
+          counter++;
+          $(this).attr('data-image-id',counter);
+        });
+      }
+      $(setClickAttr).on('click',function(){
+        updateGallery($(this));
+      });
+    }
+  });
+
 </script>
 </head>
 <body id="expertise-background-img">
@@ -150,87 +167,113 @@ function jkpopimage(imgpath, popwidth, popheight, textdescription){
   </div>
 </div>
 </div>
-<div class="container">
-  <div class="row">
-    <div class="col-lg-3 col-md-4 col-sm-6 thumb">
-      <a class="thumbnail img-responsive" href="#"onClick="jkpopimage('/images/cali-beach.jpg', 1000, 667, 'Beach in northern california.'); return false">
-        <img class="img-responsive" src="/images/cali-beach.jpg" alt="Beach in northern california.">
-      </a>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+          <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Stump Beach" data-caption="Rocky beach stump, Northern California." data-image="/images/cali-beach.jpg" data-target="#image-gallery">
+            <img class="img-responsive" src="/images/cali-beach.jpg" alt="Rocky beach stump, Northern California.">
+          </a>
+        </div>
+        <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+          <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Serenity" data-caption="Enjoying the warm summer sun, Cheekamus River." data-image="/images/img-3.jpg" data-target="#image-gallery">
+            <img class="img-responsive" src="/images/img-3.jpg" alt="Enjoying the warm summer sun, Cheekamus River.">
+          </a>
+        </div>
+        <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+          <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=" Lighthouse Park" data-caption="English Bay from Lighthouse Park, West Vancouver." data-image="/images/lighthouse-park-one.jpg" data-target="#image-gallery">
+            <img class="img-responsive" src="/images/lighthouse-park-one.jpg" alt="Beautiful northern California.">
+          </a>
+        </div>
+        <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+          <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Vancouver from Lighthouse Park" data-caption="View of downtown Vancouver from Lighthouse Park." data-image="/images/lighthouse-park-two.jpg" data-target="#image-gallery">
+            <img class="img-responsive" src="/images/lighthouse-park-two.jpg" alt="Vancouver from Lighthouse Park.">
+          </a>
+        </div>
+        <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+          <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Cannon Beach" data-caption="Picturesque Cannon Beach, Oregon." data-image="/images/cannon-beach.jpg" data-target="#image-gallery">
+            <img class="img-responsive" src="/images/cannon-beach.jpg" alt="Picturesque Cannon Beach, Oregon.">
+          </a>
+        </div>
+        <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+          <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Coastal Mist" data-caption="Mist from the Pacific ocean in northern California." data-image="/images/cali-coast-one.jpg" data-target="#image-gallery">
+            <img class="img-responsive" src="/images/cali-coast-one.jpg" alt="Mist from the Pacific ocean in northern California.">
+          </a>
+        </div>
+        <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+          <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="California Dreaming" data-caption="Beautiful northern California." data-image="/images/cali-coast-two.jpg" data-target="#image-gallery">
+            <img class="img-responsive" src="/images/cali-coast-two.jpg" alt="Beautiful northern California.">
+          </a>
+        </div>
+        <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+          <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Inukshuk" data-caption="Inukshuk along the Vancouver sea wall." data-image="/images/inukshuk.jpg" data-target="#image-gallery">
+            <img class="img-responsive" src="/images/inukshuk.jpg" alt="Inukshuk along the Vancouver sea wall.">
+          </a>
+        </div>
+        <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+          <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Rock" data-caption="River rock, Cheekamus river." data-image="/images/rock.jpg" data-target="#image-gallery">
+            <img class="img-responsive" src="/images/rock.jpg" alt="River rock, Cheekamus river.">
+          </a>
+        </div>
+        <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+          <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="River Rock" data-caption="River rock, Cheekamus river." data-image="/images/river-rock.jpg" data-target="#image-gallery">
+            <img class="img-responsive" src="/images/river-rock.jpg" alt="River rock, Cheekamus river.">
+          </a>
+        </div>
+        <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+          <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Twisted Roots" data-caption="Twisted roots. Lighthouse Park, West Vancouver." data-image="/images/twisted-roots.jpg" data-target="#image-gallery">
+            <img class="img-responsive" src="/images/twisted-roots.jpg" alt="Twisted roots. Lighthouse Park, West Vancouver.">
+          </a>
+        </div>
+        <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+          <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Looking Up" data-caption="Looking up. Lighthouse Park, West Vancouver." data-image="/images/tree-up.jpg" data-target="#image-gallery">
+            <img class="img-responsive" src="/images/tree-up.jpg" alt="Looking up. Lighthouse Park, West Vancouver.">
+          </a>
+        </div>
+        <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+          <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Oozing Tree" data-caption="Oozing tree.  Lighthouse Park, West Vancouver." data-image="/images/tree-oozing.jpg" data-target="#image-gallery">
+            <img class="img-responsive" src="/images/tree-oozing.jpg" alt="Oozing tree.  Lighthouse Park, West Vancouver.">
+          </a>
+        </div>
+        <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+          <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Flaming Tree" data-caption="Flaming tree.  Lighthouse Park, West Vancouver." data-image="/images/tree-pattern.jpg" data-target="#image-gallery">
+            <img class="img-responsive" src="/images/tree-pattern.jpg" alt="Flaming tree.  Lighthouse Park, West Vancouver.">
+          </a>
+        </div>
+        <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+          <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Rope" data-caption="Colorful Rope" data-image="/images/rope.jpg" data-target="#image-gallery">
+            <img class="img-responsive" src="/images/rope.jpg" alt="Colorful rope">
+          </a>
+        </div>
+        <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+          <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Barrell" data-caption="Staring down the barrell." data-image="/images/barrell.jpg" data-target="#image-gallery">
+            <img class="img-responsive" src="/images/barrell.jpg" alt="Staring down the barrell.">
+          </a>
+        </div>
+      </div>
     </div>
-    <div class="col-lg-3 col-md-4 col-sm-6 thumb">
-      <a class="thumbnail" href="#"onClick="jkpopimage('/images/img-3.jpg', 1000, 667, 'Enjoying the sun, on the Cheekamus river!' ); return false">
-        <img class="img-responsive" src="/images/img-3.jpg" alt="Enjoying the sun, on the Cheekamus river!">
-      </a>
-    </div>
-    <div class="col-lg-3 col-md-4 col-sm-6 thumb">
-      <a class="thumbnail" href="#"onClick="jkpopimage('/images/lighthouse-park-one.jpg', 1000, 667, 'English Bay from Lighthouse Park.'); return false">
-        <img class="img-responsive" src="/images/lighthouse-park-one.jpg" alt="English Bay from Lighthouse Park.">
-      </a>
-    </div>
-    <div class="col-lg-3 col-md-4 col-sm-6 thumb">
-      <a class="thumbnail" href="#"onClick="jkpopimage('/images/lighthouse-park-two.jpg', 1000, 667, 'View of Vancouver from Lighthouse Park.'); return false">
-        <img class="img-responsive" src="/images/lighthouse-park-two.jpg" alt="View of Vancouver from Lighthouse Park.">
-      </a>
-    </div>
-    <div class="col-lg-3 col-md-4 col-sm-6 thumb">
-      <a class="thumbnail" href="#"onClick="jkpopimage('/images/cannon-beach.jpg', 1000, 667, 'Cannon Beach, Oregon' ); return false">
-        <img class="img-responsive" src="/images/cannon-beach.jpg" alt="Cannon Beach, Oregon">
-      </a>
-    </div>
-    <div class="col-lg-3 col-md-4 col-sm-6 thumb">
-      <a class="thumbnail" href="#"onClick="jkpopimage('/images/cali-coast-one.jpg', 1000, 667, 'Northern California coast.' ); return false">
-        <img class="img-responsive" src="/images/cali-coast-one.jpg" alt="Northern California coast.">
-      </a>
-    </div>
-    <div class="col-lg-3 col-md-4 col-sm-6 thumb">
-      <a class="thumbnail" href="#"onClick="jkpopimage('/images/cali-coast-two.jpg', 1000, 667, 'Northern California coast.' ); return false">
-        <img class="img-responsive" src="/images/cali-coast-two.jpg" alt="Northern California coast.">
-      </a>
-    </div>
-    <div class="col-lg-3 col-md-4 col-sm-6 thumb">
-      <a class="thumbnail" href="#"onClick="jkpopimage('/images/inukshuk.jpg', 1000, 667, 'Inukshuk along the Vancouver sea wall.' ); return false">
-        <img class="img-responsive" src="/images/inukshuk.jpg" alt="Inukshuk along the Vancouver sea wall.">
-      </a>
-    </div>
-    <div class="col-lg-3 col-md-4 col-sm-6 thumb">
-      <a class="thumbnail" href="#"onClick="jkpopimage('/images/rock.jpg', 1000, 667 ); return false">
-        <img class="img-responsive" src="/images/rock.jpg" alt="">
-      </a>
-    </div>
-    <div class="col-lg-3 col-md-4 col-sm-6 thumb">
-      <a class="thumbnail" href="#"onClick="jkpopimage('/images/river-rock.jpg', 1000, 667 ); return false">
-        <img class="img-responsive" src="/images/river-rock.jpg" alt="">
-      </a>
-    </div>
-    <div class="col-lg-3 col-md-4 col-sm-6 thumb">
-      <a class="thumbnail" href="#"onClick="jkpopimage('/images/twisted-roots.jpg', 1000, 667 ); return false">
-        <img class="img-responsive" src="/images/twisted-roots.jpg" alt="">
-      </a>
-    </div>
-    <div class="col-lg-3 col-md-4 col-sm-6 thumb">
-      <a class="thumbnail" href="#"onClick="jkpopimage('/images/tree-up.jpg', 1000, 667 ); return false">
-        <img class="img-responsive" src="/images/tree-up.jpg" alt="">
-      </a>
-    </div>
-    <div class="col-lg-3 col-md-4 col-sm-6 thumb">
-      <a class="thumbnail" href="#"onClick="jkpopimage('/images/tree-oozing.jpg', 1000, 667 ); return false">
-        <img class="img-responsive" src="/images/tree-oozing.jpg" alt="">
-      </a>
-    </div>
-    <div class="col-lg-3 col-md-4 col-sm-6 thumb">
-      <a class="thumbnail" href="#"onClick="jkpopimage('/images/tree-pattern.jpg', 1000, 667 ); return false">
-        <img class="img-responsive" src="/images/tree-pattern.jpg" alt="">
-      </a>
-    </div>
-    <div class="col-lg-3 col-md-4 col-sm-6 thumb">
-      <a class="thumbnail" href="#"onClick="jkpopimage('/images/rope.jpg', 1000, 667 ); return false">
-        <img class="img-responsive" src="/images/rope.jpg" alt="">
-      </a>
-    </div>
-    <div class="col-lg-3 col-md-4 col-sm-6 thumb">
-      <a class="thumbnail" href="#"onClick="jkpopimage('/images/barrell.jpg', 1000, 667 ); return false">
-        <img class="img-responsive" src="/images/barrell.jpg" alt="">
-      </a>
+    <div class="modal fade" id="image-gallery" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title" id="image-gallery-title"></h4>
+          </div>
+          <div class="modal-body">
+            <img id="image-gallery-image" class="img-responsive" src="">
+          </div>
+          <div class="modal-footer">
+            <div class="col-md-2">
+              <button type="button" class="btn btn-primary" id="show-previous-image">Previous</button>
+            </div>
+            <div class="col-md-8 text-justify" id="image-gallery-caption">
+              This text will be overwritten by jQuery
+            </div>
+            <div class="col-md-2">
+              <button type="button" id="show-next-image" class="btn btn-primary">Next</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </body>
